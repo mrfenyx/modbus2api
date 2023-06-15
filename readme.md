@@ -31,6 +31,34 @@ Replace <PORT> with the port on which to publish the endpoint, <HOST_IP>, <HOST_
 
 Once the Docker container is running, you can access the API by sending a GET request to <your-docker-host-ip>:<PORT>/regval.
 
-### License
+### Limitations
+
+1. Currently only extracts 1 register
+2. Multi-register values are not supported (no Hi/Low bytes)
+3. GET route name is fixed (/regval)
+4. There is no authentication, security, etc.
+
+# Example for using the value
+
+You can use the value through a simple JavaScript call and display it on a website. Here's an example (save it as an HTML file):
+
+```html
+<script>
+    window.onload = function() {
+        fetch('http://<DOCKER_HOST_IP>:<PORT>/regval')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('apiValue').innerHTML = data.value;
+        })
+        .catch(error => console.error('Error:', error));
+    };
+    </script>
+    
+
+<p id="apiValue">Loading...</p>
+
+```
+
+# License
 
 This project is licensed under the MIT License - see the [license.md](/license.md)
