@@ -1,0 +1,4 @@
+pymodbus
+flask
+flask-cors
+gunicorn
